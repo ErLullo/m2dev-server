@@ -7,5 +7,6 @@ ViewRadius	128
 
 MapSize	6	6
 BasePosition	358400	153600
-TextureSet	metin2_N_snowm.txt
+TextureSet	textureset\metin2_N_snowm.txt
 Environment	N-snowm01.msenv
+

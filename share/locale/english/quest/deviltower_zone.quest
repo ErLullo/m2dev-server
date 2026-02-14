@@ -1,8 +1,11 @@
+define DEVILTOWER_BASE_X 1280
+define DEVILTOWER_BASE_Y 7936
+
 quest deviltower_zone begin
     state start begin
     when login begin
         if pc.get_map_index() == 66 then
-            if pc.get_x() < 2048+88 or pc.get_y() < 6656+577 or pc.get_x() > 2048+236 or pc.get_y() > 6656+737 then
+            if pc.get_x() < DEVILTOWER_BASE_X +88 or pc.get_y() < DEVILTOWER_BASE_Y +577 or pc.get_x() > DEVILTOWER_BASE_X +236 or pc.get_y() > DEVILTOWER_BASE_Y +737 then
                 pc.warp((5376+532)*100, (512+596+4)*100, 65)
             end
         pc.set_warp_location(65, 5376+532, 512+596+4)
@@ -31,7 +34,7 @@ quest deviltower_zone begin
             say(gameforge.deviltower_zone._40_say)
             local s =  select(gameforge.locale.monkey_dungeon.enter, gameforge.locale.monkey_dungeon.no_enter)
             if s == 1 then
-                pc.warp(216500,727000)
+                pc.warp(( DEVILTOWER_BASE_X +117)*100, ( DEVILTOWER_BASE_Y +614)*100)
             end
         end
     end
@@ -39,12 +42,12 @@ quest deviltower_zone begin
         timer("devil_stone1_1", 6)
     end
     when devil_stone1_1.timer begin
-        d.new_jump_all(66, special.devil_tower[1][1], special.devil_tower[1][2])
+        d.new_jump_all(66, DEVILTOWER_BASE_X +126, DEVILTOWER_BASE_Y +384)
         d.regen_file("data/dungeon/deviltower2_regen.txt")
-        d.set_warp_at_eliminate(4, d.get_map_index(), special.devil_tower[2][1], special.devil_tower[2][2], "data/dungeon/deviltower3_regen.txt")
+        d.set_warp_at_eliminate(4, d.get_map_index(), DEVILTOWER_BASE_X +134, DEVILTOWER_BASE_Y +147, "data/dungeon/deviltower3_regen.txt")
     end
     when devil_stone3.kill with pc.in_dungeon() and pc.get_map_index() >= 660000 and pc.get_map_index() < 670000 begin
-        d.set_warp_at_eliminate(4, d.get_map_index(), special.devil_tower[3][1], special.devil_tower[3][2], "data/dungeon/deviltower4_regen.txt")
+        d.set_warp_at_eliminate(4, d.get_map_index(), DEVILTOWER_BASE_X +369, DEVILTOWER_BASE_Y +629, "data/dungeon/deviltower4_regen.txt")
         d.check_eliminated()
     end
 
@@ -152,7 +155,7 @@ quest deviltower_zone begin
             d.setf("level", 5)
             d.setf("stone_count", 5)
             notice_multiline(gameforge.deviltower_zone._110_dNotice,d.notice)
-            d.jump_all(special.devil_tower[4][1], special.devil_tower[4][2])
+            d.jump_all( DEVILTOWER_BASE_X +369, DEVILTOWER_BASE_Y +401)
             server_timer('devil_stone5_fail1', 5*60, get_server_timer_arg())
             clear_server_timer('devil_stone4_update', get_server_timer_arg())
 
@@ -214,7 +217,7 @@ quest deviltower_zone begin
             d.regen_file("data/dungeon/deviltower6_regen.txt")
 
             notice_multiline(gameforge.deviltower_zone._130_dNotice,d.notice)
-            d.jump_all(special.devil_tower[5][1], special.devil_tower[5][2])
+            d.jump_all( DEVILTOWER_BASE_X +374, DEVILTOWER_BASE_Y +167)
             local server_arg = d.get_map_index()
             clear_server_timer('devil_stone5_fail1', server_arg)
             clear_server_timer('devil_stone5_fail2', server_arg)
@@ -333,7 +336,7 @@ quest deviltower_zone begin
 
 
         notice_multiline(gameforge.deviltower_zone._240_dNotice,d.notice)
-        d.jump_all(2048+590, 6656+638)
+        d.jump_all( DEVILTOWER_BASE_X +590, DEVILTOWER_BASE_Y +638)
     end
 
     when 8018.kill with pc.in_dungeon() and pc.get_map_index() >= 660000 and pc.get_map_index() < 670000 begin
@@ -381,7 +384,7 @@ quest deviltower_zone begin
         d.setf("level", 8)
 
         notice_multiline(gameforge.deviltower_zone._260_dNotice,d.notice)
-        d.jump_all(2048+590, 6656+403)
+        d.jump_all( DEVILTOWER_BASE_X +590, DEVILTOWER_BASE_Y +403)
         d.set_regen_file("data/dungeon/deviltower8_regen.txt")
         d.spawn_mob(20366, 640, 460)
         local _count = pc.count_item(30302)
@@ -414,7 +417,7 @@ quest deviltower_zone begin
 
 
         notice_multiline(gameforge.deviltower_zone._270_dNotice,d.notice)
-        d.jump_all(2048+590, 6656+155)
+        d.jump_all( DEVILTOWER_BASE_X +590, DEVILTOWER_BASE_Y +155)
         d.regen_file("data/dungeon/deviltower9_regen.txt")
     end
 

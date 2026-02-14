@@ -7,6 +7,6 @@ ViewRadius	128
 
 MapSize	3	3
 BasePosition	0	25600
-TextureSet	metin2_map_t1.txt
-Environment	map_b_fielddungeon2.msenv
+TextureSet	textureset\metin2_map_t1.txt
+Environment	t1.msenv
 
